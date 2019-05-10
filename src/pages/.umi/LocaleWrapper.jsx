@@ -24,7 +24,7 @@ defaultAntd = defaultAntd.default || defaultAntd;
 const localeInfo = {
   'en-US': {
     messages: {
-      ...require('/Users/mavinbin/Sites/Edbox_complex_component_2/src/locales/en-US.js').default,
+      ...require('/Users/mavinbin/Sites/Edbox_complex_component/src/locales/en-US.js').default,
     },
     locale: 'en-US',
     antd: require('antd/lib/locale-provider/en_US'),
