@@ -1,0 +1,22 @@
+.picker {
+    width: 200px;
+}
+
+.selected {
+    width: 164px;
+    height: 24px;
+    margin-top: 3px;
+    border-radius: 2px;
+}
+
+.dropdown {
+    display: none;
+}
+
+:global {
+    .color-picker {
+        .ant-select-selection__rendered {
+            margin-left: 4px;
+        }
+    }
+}
