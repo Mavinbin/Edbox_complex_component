@@ -10,7 +10,7 @@ class FontSize extends Component {
         const data = this.props.data;
         const {Option} = Select;
         return (
-            <div className="widget">
+            <div className={this.props.className ? this.props.className : null}>
                 <Label name={formatMessage({id: 'size'})}/>
                 <div className={styles['body']}>
                     <Select defaultValue={this.props.defaultValue} className={styles['select']}>

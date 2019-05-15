@@ -8,7 +8,7 @@ import styles from './index.scss';
 class FontStyle extends Component {
     render() {
         return (
-            <div className="widget">
+            <div className={this.props.className ? this.props.className : null}>
                 <Label name={formatMessage({id: 'style'})}/>
                 <div className={styles['body']}>
                     <IconButton className={styles['btn-bold']}>B</IconButton>

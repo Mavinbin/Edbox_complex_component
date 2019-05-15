@@ -9,7 +9,7 @@ class FontFamily extends Component {
         const data = this.props.data;
         const {Option, OptGroup} = Select;
         return (
-            <div className="widget">
+            <div className={this.props.className ? this.props.className : null}>
                 <Label name={formatMessage({id: 'font'})}/>
                 <Select defaultValue={this.props.defaultValue} className={styles['select']}>
                     {data && data.recent &&  data.recent.length? 

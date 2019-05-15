@@ -22,9 +22,9 @@ class IconButton extends Component {
     render() {
         const {selected} = this.state;
         return (
-            <Button className={styles['btn'] + ' ' + this.props.className + (selected ? ' ' + styles['selected'] : '')} onClick={this.handleClick.bind(this)} >
+            <div className={styles['btn'] + ' ' + this.props.className + (selected ? ' ' + styles['selected'] : '')} onClick={this.handleClick.bind(this)} >
                 {this.props.iconfont ? <IconFont type={this.props.iconfont}/>: this.props.children}
-            </Button>
+            </div>
         )
     }
 }
