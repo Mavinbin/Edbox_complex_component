@@ -18,6 +18,9 @@ class IconButton extends Component {
         this.setState({
             selected: !selected
         });
+        if (this.props.onClick && typeof(this.props.onClick == 'function')) {
+            this.props.onClick();
+        }
     }
     render() {
         const {selected} = this.state;
