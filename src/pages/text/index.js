@@ -111,10 +111,10 @@ class Text extends Component {
         return (
             <div>
                 <Title name={formatMessage({id: 'edit_text'})}/>
-                <FontFamily data={fontFamilyList} defaultValue={0}/>
-                <FontSize data={fontSizeList} defaultValue={0}/>
-                <Color color={fontColor}/>
-                <FontStyle/>
+                <FontFamily data={fontFamilyList} defaultValue={0} className={common['row']}/>
+                <FontSize data={fontSizeList} defaultValue={0} className={common['row']}/>
+                <Color color={fontColor} className={common['row']}/>
+                <FontStyle className={common['row']}/>
             </div>
         )
     }

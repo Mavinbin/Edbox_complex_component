@@ -1,24 +1,31 @@
 import React, {Component} from 'react';
 import {formatMessage} from 'umi/locale';
-import {Select} from 'antd';
+import {Icon} from 'antd';
 import Label from '../../components/label';
-import IconButton from '../../components/iconbutton';
 import styles from './index.scss';
 
 class Color extends Component {
+    handlePickerClick(e) {
+        if (this.picker.classList.contains('ant-select-open')) {
+            this.picker.classList.remove('ant-select-open');
+            this.picker.classList.remove('ant-select-focused');
+        } else {
+            this.picker.classList.add('ant-select-open');
+            this.picker.classList.add('ant-select-focused');
+        }
+    }
     render() {
-        const {Option} = Select;
         return (
-            <div className="widget">
+            <div className={this.props.className ? this.props.className : null}>
                 <Label name={formatMessage({id: 'color'})}/>
-                <Select className={styles['picker'] + ' color-picker'} defaultValue={0} dropdownClassName={styles['dropdown']}>
-                    <Option value={0} key={0}>
-                        <div 
-                            className={styles['selected']} 
-                            style={this.props.color ? {backgroundColor: this.props.color} : null}
-                        ></div>
-                    </Option>
-                </Select>
+                <div className={styles['picker']} onClick={this.handlePickerClick.bind(this)} ref={picker => this.picker = picker}>
+                    <div className={styles['selection'] + ' ant-select-selection'} >
+                        <div className={styles['selected']} style={this.props.color ? {backgroundColor: this.props.color} : null}></div>
+                        <div className={styles['ico-arrow'] + ' ant-select-arrow'}>
+                            <Icon type="down" className="ant-select-arrow-icon"/>
+                        </div>
+                    </div>
+                </div>
             </div>
         )
     }

@@ -3,7 +3,13 @@
     height: 32px;
     padding: 0;
     border-radius: 2px;
-    font-size: 14px;
+    font-size: 16px;
     color: #666;
     overflow: hidden;
+    margin-right: 10px;
+}
+
+.selected {
+    color: #d12721;
+    border-color: #d12721;
 }

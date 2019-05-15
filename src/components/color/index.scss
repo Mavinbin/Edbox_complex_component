@@ -1,22 +1,28 @@
 .picker {
+    position: relative;
     width: 200px;
 }
 
-.selected {
-    width: 164px;
-    height: 24px;
-    margin-top: 3px;
+.selection {
+    position: relative;
+    width: 200px;
+    height: 30px;
+    padding: 3px;
     border-radius: 2px;
+    border: 1px solid #d9d9d9;
+    cursor: pointer;
 }
 
-.dropdown {
-    display: none;
+.selected {
+    width: 160px;
+    height: 100%;
 }
 
-:global {
-    .color-picker {
-        .ant-select-selection__rendered {
-            margin-left: 4px;
-        }
-    }
+.ico-arrow {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    margin-top: -6px;
+    font-size: 12px;
+    color: rgba(0, 0, 0, 0.25);
 }

@@ -13,7 +13,8 @@
     "node-sass": "^4.12.0",
     "react": "^16.7.0",
     "react-dom": "^16.7.0",
-    "sass-loader": "^7.1.0"
+    "sass-loader": "^7.1.0",
+    "wavesurfer.js": "^2.2.1"
   },
   "devDependencies": {
     "babel-eslint": "^9.0.0",
