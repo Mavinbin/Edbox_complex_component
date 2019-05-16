@@ -22,7 +22,7 @@ class Color extends Component {
         return (
             <div className={this.props.className ? this.props.className : null}>
                 <Label name={formatMessage({id: 'color'})}/>
-                <div className={styles['picker'] + (isOpen ? ' ant-select-open ant-select-focused' : '')} onClick={this.handlePickerClick.bind(this)} ref={picker => this.picker = picker}>
+                <div className={styles['picker'] + (isOpen ? ' ant-select-open ant-select-focused' : '')} onClick={this.handlePickerClick.bind(this)}>
                     <div className={styles['selection'] + ' ant-select-selection'} >
                         <div className={styles['selected']} style={this.props.color ? {backgroundColor: this.props.color} : null}></div>
                         <div className={styles['ico-arrow'] + ' ant-select-arrow'}>

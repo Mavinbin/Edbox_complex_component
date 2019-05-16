@@ -11,7 +11,7 @@ class FontStyle extends Component {
             <div className={this.props.className ? this.props.className : null}>
                 <Label name={formatMessage({id: 'style'})}/>
                 <div className={styles['body']}>
-                    <IconButton className={styles['btn-bold']}>B</IconButton>
+                    <IconButton className={styles['btn-bold']} onClick={() => {console.log(111)}}>B</IconButton>
                     <IconButton className={styles['btn-italic']}>I</IconButton>
                     <IconButton className={styles['btn-underline']}>
                         <span>U</span>

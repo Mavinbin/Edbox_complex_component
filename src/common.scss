@@ -107,4 +107,23 @@
   .row {
     margin-bottom: 15px;
   }
+
+  .row2 {
+    margin-bottom: 24px;
+  }
+
+  .btm-btns {
+    position: absolute;
+    left: 0;
+    bottom: 15px;
+    width: 100%;
+    text-align: center;
+
+    button {
+      width: 86px;
+      margin: 0 5px;
+      padding: 0;
+      text-align: center;
+    }
+  }
 }

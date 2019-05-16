@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
-import Title from '../../components/title';
+import Header from '../../components/header';
 import FontFamily from '../../components/fontfamily';
 import FontSize from '../../components/fontsize';
 import Color from '../../components/color';
@@ -110,7 +110,7 @@ class Text extends Component {
         const {fontFamilyList, fontSizeList, fontColor} = this.state;
         return (
             <div>
-                <Title name={formatMessage({id: 'edit_text'})}/>
+                <Header title={formatMessage({id: 'edit_text'})}/>
                 <FontFamily data={fontFamilyList} defaultValue={0} className="row"/>
                 <FontSize data={fontSizeList} defaultValue={0} className="row"/>
                 <Color color={fontColor} className="row"/>
