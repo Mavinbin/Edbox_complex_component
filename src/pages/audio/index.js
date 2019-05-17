@@ -2,6 +2,7 @@ import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
 import Link from 'umi/link';
 import {Icon, Slider, Row, Col, Radio, Button} from 'antd';
+import IconFont from '@/components/iconfont';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline';
 import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions'
@@ -11,10 +12,6 @@ import Name from '@/components/name';
 import NumberInput from '@/components/numberinput';
 import '@/common.scss';
 import styles from './index.scss';
-
-const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1188697_g4iqmhyi2qg.js'
-});
 
 class EditAudio extends Component {
     constructor() {
@@ -129,7 +126,9 @@ class EditAudio extends Component {
                 <Header title={formatMessage({id: 'edit_audio'})}/>
                 <div className="row">
                     <IconButton iconfont="icon-upload-audio"/>
-                    <IconButton iconfont="icon-network-audio"/>
+                    <Link to="/audio/audio_library">
+                        <IconButton iconfont="icon-network-audio"/>
+                    </Link>
                     <Link to="/audio/sound_recording">
                         <IconButton iconfont="icon-microphone1"/>
                     </Link>

@@ -1,12 +1,9 @@
 import React, {Component} from 'react';
 import {Icon} from 'antd';
+import IconFont from '@/components/iconfont';
 import router from 'umi/router';
 import styles from './index.scss';
 import { goBack } from 'react-router-redux';
-
-const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1188697_4xq979pc8zn.js'
-});
 
 class Header extends Component {
     goBack() {

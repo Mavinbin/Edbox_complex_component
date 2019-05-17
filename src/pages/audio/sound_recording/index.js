@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
 import {Icon, Button} from 'antd';
+import IconFont from '@/components/iconfont';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline';
 import Swiper from 'swiper';
@@ -9,11 +10,6 @@ import Name from '@/components/name';
 import 'swiper/dist/css/swiper.css';
 import '@/common.scss';
 import styles from './index.scss';
-
-const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1188697_g4iqmhyi2qg.js'
-});
-
 class SoundRecording extends Component {
     constructor(props) {
         super(props);

@@ -1,10 +1,6 @@
 import React, {Component} from 'react';
-import {Button, Icon} from 'antd';
+import IconFont from '@/components/iconfont';
 import styles from './index.scss';
-
-const IconFont = Icon.createFromIconfontCN({
-    scriptUrl: '//at.alicdn.com/t/font_1188697_tgz3vwzfd.js'
-});
 
 class IconButton extends Component {
     constructor(props) {
