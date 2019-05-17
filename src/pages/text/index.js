@@ -5,8 +5,8 @@ import FontFamily from '../../components/fontfamily';
 import FontSize from '../../components/fontsize';
 import Color from '../../components/color';
 import FontStyle from '../../components/fontstyle';
-import common from '../../common.scss'
-import styles from './index.scss';
+import '../../common.scss'
+import './index.scss';
 
 class Text extends Component {
     constructor() {

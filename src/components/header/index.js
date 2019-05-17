@@ -1,9 +1,7 @@
 import React, {Component} from 'react';
-import {Icon} from 'antd';
 import IconFont from '@/components/iconfont';
 import router from 'umi/router';
 import styles from './index.scss';
-import { goBack } from 'react-router-redux';
 
 class Header extends Component {
     goBack() {

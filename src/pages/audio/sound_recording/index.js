@@ -106,7 +106,7 @@ class SoundRecording extends Component {
             watchSlidesVisibility: true,
             watchSlidesProgress: true
         })
-        const swiper = new Swiper('#mainSwiper', {
+        new Swiper('#mainSwiper', {
             navigation: {
                 nextEl: '#swiperBtnNext',
                 prevEl: '#swiperBtnPrev'

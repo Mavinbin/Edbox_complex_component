@@ -5,9 +5,6 @@ import IconButton from '../../components/iconbutton';
 import styles from './index.scss';
 
 class Image extends Component {
-    constructor() {
-        super();
-    }
     render() {
         return (
             <div>
