@@ -1,14 +1,15 @@
 import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
+import Link from 'umi/link';
 import {Icon, Slider, Row, Col, Radio, Button} from 'antd';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline';
 import Regions from 'wavesurfer.js/dist/plugin/wavesurfer.regions'
-import Header from '../../components/header';
-import IconButton from '../../components/iconbutton';
-import Name from '../../components/name';
-import NumberInput from '../../components/numberinput';
-import '../../common.scss';
+import Header from '@/components/header';
+import IconButton from '@/components/iconbutton';
+import Name from '@/components/name';
+import NumberInput from '@/components/numberinput';
+import '@/common.scss';
 import styles from './index.scss';
 
 const IconFont = Icon.createFromIconfontCN({
@@ -129,7 +130,9 @@ class EditAudio extends Component {
                 <div className="row">
                     <IconButton iconfont="icon-upload-audio"/>
                     <IconButton iconfont="icon-network-audio"/>
-                    <IconButton iconfont="icon-microphone1"/>
+                    <Link to="/audio/sound_recording">
+                        <IconButton iconfont="icon-microphone1"/>
+                    </Link>
                     <IconButton iconfont="icon-forbid-s-o"/>
                 </div>
                 <Name className="row" defaultValue={name}/>

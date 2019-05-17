@@ -4,10 +4,10 @@ import {Icon, Button} from 'antd';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline';
 import Swiper from 'swiper';
-import Header from '../../components/header';
-import Name from '../../components/name';
+import Header from '@/components/header';
+import Name from '@/components/name';
 import 'swiper/dist/css/swiper.css';
-import '../../common.scss';
+import '@/common.scss';
 import styles from './index.scss';
 
 const IconFont = Icon.createFromIconfontCN({
