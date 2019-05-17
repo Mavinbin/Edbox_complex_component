@@ -1,0 +1,136 @@
+.lib-type {
+    width: 100%;
+    display: flex;
+    margin: 3px 0 0 0;
+
+    label {
+        flex: 1;
+        text-align: center;
+        padding: 0;
+    }
+}
+
+.search-bar {
+    padding: 10px 0;
+    border: 1px solid #e2e2e2;
+    border-width: 1px 0;
+}
+
+.top-panel {
+    flex: auto;
+}
+
+.subtype-btn {
+    width: 100%;
+    margin-bottom: 4px;
+}
+
+.list {
+    margin-bottom: 62px;
+    overflow: auto;
+}
+
+.list-group {
+    width: 100%;
+}
+
+.list-item {
+    position: relative;
+    height: 40px;
+    line-height: 40px;
+    padding: 0 70px 0 18px;
+    border-left: 2px solid transparent;
+    border-bottom: 1px solid #e2e2e2;
+    background: #fff;
+    color: #333;
+    overflow: hidden;
+
+    &:hover {
+        border-left-color: #c40100;
+        background: #f6f6f6;
+
+        .list-item-c {
+            line-height: 20px;
+        }
+    }
+}
+
+.list-item-c {
+    position: relative;
+    height: 100%;
+    transition: all 0.3s;
+
+    time {
+        float: right;
+        color: #999;
+        margin-left: 10px;
+    }
+}
+
+.ico-sound {
+    vertical-align: middle;
+    font-size: 14px;
+    color: #999;
+    margin-right: 10px;
+}
+
+.list-item-r {
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: 60px;
+    height: 40px;
+    line-height: 40px;
+}
+
+.ico-status {
+    color: #999;
+    font-size: 16px;
+}
+
+.list-item-radio {
+    position: absolute;
+    top: 50%;
+    right: 20px;
+    margin: 0;
+    transform: translate(0, -50%);
+}
+
+.slider {
+    width: 99%;
+    margin: 2px 0 0 7px;
+}
+
+:global {
+    .lib-type {
+        .ant-radio-button-wrapper {
+            height: 26px;
+            line-height: 26px;
+        }
+    }
+
+    .filter-panel {
+        .ant-tabs-content {
+            padding-bottom: 10px;
+            border-bottom: 1px solid #ccc;
+            overflow: hidden;
+
+            &.hide {
+                height: 73px;
+            }
+        }
+        .ant-tabs-bar {
+            border: none;
+            margin-bottom: 0;
+        }
+        .ant-tabs-ink-bar {
+            display: none !important;
+        }
+    }
+
+    .audio-slider {
+        .ant-slider-rail {
+            background: #ccc;
+        }
+    }
+}

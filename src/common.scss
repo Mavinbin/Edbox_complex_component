@@ -113,11 +113,13 @@
   }
 
   .btm-btns {
-    position: absolute;
+    position: fixed;
     left: 0;
-    bottom: 15px;
+    bottom: 0;
     width: 100%;
+    padding: 15px 0;
     text-align: center;
+    background: #f6f6f6;
 
     button {
       width: 86px;
@@ -125,5 +127,11 @@
       padding: 0;
       text-align: center;
     }
+  }
+
+  .ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }
