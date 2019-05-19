@@ -134,4 +134,22 @@
     overflow: hidden;
     text-overflow: ellipsis;
   }
+
+  .no-data {
+    display: table;
+    width: 100%;
+
+    .ant-empty {
+      display: table-cell;
+      vertical-align: middle;
+      
+      span {
+        display: block;
+        line-height: 23px;
+        margin-bottom: 0;
+        font-size: 12px;
+        color: #666;
+      }
+    }
+  }
 }

@@ -7,11 +7,11 @@ import styles from './index.scss';
 class Search extends Component {
     render () {
         const {Option} = Select;
-        const {searchEngine, defaultEngine, ...inputProps} = this.props;
+        const {searchEngineList, defaultEngine, onEngineChange, ...inputProps} = this.props;
         const selectBefore = (
-            searchEngine && searchEngine.length ?
-            <Select defaultValue={defaultEngine} dropdownClassName="search-dropdown" className={styles['select-before']}>
-                {searchEngine.map(engine => 
+            searchEngineList && searchEngineList.length ?
+            <Select defaultValue={defaultEngine} dropdownClassName="search-dropdown" className={styles['select-before']} onChange={onEngineChange}>
+                {searchEngineList.map(engine => 
                     <Option value={engine.id} key={engine.id}>
                         <IconFont type={engine.icon} className={styles['ico-engine']}/>
                         <span>{getLocale() === 'en-US' ? engine.englishName : engine.chineseName}</span>

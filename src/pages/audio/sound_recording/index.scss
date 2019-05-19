@@ -39,6 +39,7 @@
     }
 
     .btn-record {
+        position: relative;
         width: 44px;
         height: 44px;
         line-height: 40px;
@@ -47,17 +48,55 @@
         border: 2px solid #999;
         border-radius: 50%;
         font-size: 28px;
+
+        // .no-connected {
+        //     position: absolute;
+        //     right: -3px;
+        //     bottom: 0;
+        //     width: 22px;
+        //     height: 22px;
+        //     line-height: 0;
+        //     font-size: 22px;
+        //     text-align: center;
+        // }
+
+        .ico-forbid{
+            position: absolute;
+            right: -3px;
+            bottom: 0;
+            line-height: 0;
+            margin-bottom: 0 !important;
+            font-size: 23px;
+        }
+
+        .ico-forbid {
+            color: #cf0201;
+            margin-bottom: 8px;
+        }
     }
 
     .ico-play {
-        font-size: 40px;
-        width: 20px;
-        height: 20px;
-        overflow: hidden;
+        font-size: 20px;
+    }
 
-        svg {
-            margin-left: -12px;
-            margin-top: -10px;
+    .warning-info {
+        font-size: 12px;
+        color: #cf0100;
+        padding-left: 20px;
+
+        i {
+            display: inline-block;
+            vertical-align: middle;
+            width: 12px;
+            height: 12px;
+            line-height: 12px;
+            border: 1px solid #cf0100;
+            border-radius: 50%;
+            overflow: hidden;
+            font-style: normal;
+            margin-left: 5px;
+            margin-bottom: 2px;
+            cursor: pointer;
         }
     }
 }

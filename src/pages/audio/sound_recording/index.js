@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
-import {Icon, Button} from 'antd';
+import {Icon, Button, Popover} from 'antd';
 import IconFont from '@/components/iconfont';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline';
@@ -152,11 +152,21 @@ class SoundRecording extends Component {
                     <div id="timeline" className={styles['timeline']}></div>
                 </div>
                 <div className={`${styles['actions']} row2`}>
-                    <Icon type="reload" className={styles['ico-reload']}/>
+                    <IconFont type="icon-reload" className={styles['ico-reload']}/>
                     <Button className={styles['btn-record']}>
                         <IconFont type="icon-microphone" className={styles['ico-record']}/>
+                        <IconFont type="icon-forbid-s-o" className={styles['ico-forbid']}/>
                     </Button>
-                    <IconFont type="icon-play" className={styles['ico-play']}/>
+                    {
+                        // <IconFont type="icon-play" className={styles['ico-play']}/> // 播放状态
+                        <IconFont type="icon-stop" className={styles['ico-play']}/> // 停止状态
+                    }
+                    <p className={styles['warning-info']}>
+                        {formatMessage({id: 'microphone_not_connetced'})}
+                        <Popover placement="topLeft" content={formatMessage({id: 'check_microphone'}).split('<br>').map((str, i) => <span><span key={i}>{str}</span><br/></span>)}>
+                            <i>?</i>
+                        </Popover>
+                    </p>
                 </div>
                 {audioEffect && audioEffect.length ?
                     <div className="effect-swiper row2">

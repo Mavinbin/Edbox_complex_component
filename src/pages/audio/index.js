@@ -125,14 +125,14 @@ class EditAudio extends Component {
             <div>
                 <Header title={formatMessage({id: 'edit_audio'})}/>
                 <div className="row">
-                    <IconButton iconfont="icon-upload-audio"/>
+                    <IconButton iconfont="icon-upload-audio" toolTip={formatMessage({id: 'upload_local_audio'})} placement="bottomLeft"/>
                     <Link to="/audio/audio_library">
-                        <IconButton iconfont="icon-network-audio"/>
+                        <IconButton iconfont="icon-network-audio" toolTip={formatMessage({id: 'select_online_audio'})} placement="bottomLeft"/>
                     </Link>
                     <Link to="/audio/sound_recording">
-                        <IconButton iconfont="icon-microphone1"/>
+                        <IconButton iconfont="icon-microphone1" toolTip={formatMessage({id: 'record_audio'})}/>
                     </Link>
-                    <IconButton iconfont="icon-forbid-s-o"/>
+                    <IconButton iconfont="icon-forbid-s-o" toolTip={formatMessage({id: 'no_audio'})}/>
                 </div>
                 <Name className="row" defaultValue={name}/>
                 <div className="row">
@@ -169,9 +169,12 @@ class EditAudio extends Component {
                 <div className={`${styles['actions']} row2`}>
                     <IconFont type="icon-save" className={styles['ico-save']}/>
                     <Button className={styles['btn-play']}>
-                        <IconFont type="icon-play" className={styles['ico-play']}/>
+                    {
+                        <IconFont type="icon-play" className={styles['ico-play']}/> // 播放状态
+                        // <IconFont type="icon-pause" className={styles['ico-play']}/> // 暂停状态
+                    }
                     </Button>
-                    <Icon type="reload" className={styles['ico-reload']}/>
+                    <IconFont type="icon-reload" className={styles['ico-reload']}/>
                 </div>
                 <div className="btm-btns">
                     <Button type="primary" className={styles['btn-reset']}>{formatMessage({'id': 'reset'})}</Button>

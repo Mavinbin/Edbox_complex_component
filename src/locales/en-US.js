@@ -38,6 +38,10 @@ export default {
   'music': 'Music',
   'effects': 'Effects',
   'baidu_search': 'Baidu Search',
+  'upload_local_audio': 'Upload local audio',
+  'select_online_audio': 'Select online audio',
+  'record_audio': 'Record audio',
+  'no_audio': 'No audio',
 
   // operations
   'cancel': 'Cancel',
@@ -64,6 +68,7 @@ export default {
   'reset_clip_operation': 'Do you confirm the reset clipping operation?',
   'audio_settings_successful': 'Audio Setting Successful!',
   'audio_settings_failed': 'Audio Setting failed!',
+  'check_microphone': 'Go to: Controll Panel > Settings > Input Devices,<br> to check microphone',
 
   // warning
   'restore_picture_warning': 'After restoring, all modifications will be lost. Are you sure to restore the picture?',

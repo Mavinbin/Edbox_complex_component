@@ -20,13 +20,31 @@
     flex: auto;
 }
 
+.subtype-group {
+    width: 100%;
+}
+
 .subtype-btn {
     width: 100%;
     margin-bottom: 4px;
+    text-align: center;
+    color: #666;
+
+    &.ant-radio-button-wrapper-checked {
+        color: #c40100;
+    }
+
+    i {
+        color: #999;
+    }
 }
 
 .list {
-    margin-bottom: 62px;
+    // position: fixed;
+    // top: 300px;
+    // bottom: 62px;
+    width: 100%;
+    margin: auto;
     overflow: auto;
 }
 
@@ -39,18 +57,41 @@
     height: 40px;
     line-height: 40px;
     padding: 0 70px 0 18px;
-    border-left: 2px solid transparent;
     border-bottom: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
     overflow: hidden;
 
-    &:hover {
-        border-left-color: #c40100;
-        background: #f6f6f6;
+    &:before {
+        display: none;
+        content: "";
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 2px;
+        height: 100%;
+        background: #c40100;
+    }
 
+    &:hover {
+        background: #f6f6f6;
+        &:before {
+            display: block;
+            box-shadow: 0 1px 5px 0 rgba(255, 57, 57, 0.69);
+        }
+    }
+
+    &.list-item-play {
+        &:before {
+            display: block;
+        }
         .list-item-c {
             line-height: 20px;
+        }
+
+        .ico-sound {
+            background-position-y: -14px;
+            animation: soundPlay 1s steps(1, start) infinite;
         }
     }
 }
@@ -68,10 +109,37 @@
 }
 
 .ico-sound {
+    display: inline-block;
     vertical-align: middle;
     font-size: 14px;
     color: #999;
     margin-right: 10px;
+    width: 14px;
+    height: 14px;
+    background: url(../images/sound_play.png) -28px 0 no-repeat;
+    cursor: pointer;
+
+    &:hover {
+        background-position-y: -14px;
+    }
+}
+
+@keyframes soundPlay{
+    0% {
+        background-position-x: -28px;
+    }
+
+    33.33% {
+        background-position-x: 0;
+    }
+
+    66.66% {
+        background-position-x: -14px;
+    }
+
+    100%{
+        background-position-x: -28px;
+    }
 }
 
 .list-item-r {
@@ -86,6 +154,10 @@
 .ico-status {
     color: #999;
     font-size: 16px;
+
+    &:hover {
+        color: #cf0100;
+    }
 }
 
 .list-item-radio {
@@ -101,6 +173,28 @@
     margin: 2px 0 0 7px;
 }
 
+.search-word {
+    border-bottom: 1px solid #ccc;
+
+    .tit {
+        height: 26px;
+        line-height: 26px;
+        margin-bottom: 0;
+        color: #999;
+    }
+
+    .warning-info {
+        font-size: 12px;
+        color: #999;
+
+        i {
+            font-size: 14px;
+            color: #cf0302;
+            margin-right: 5px;
+        }
+    }
+}
+
 :global {
     .lib-type {
         .ant-radio-button-wrapper {
@@ -112,7 +206,7 @@
     .filter-panel {
         .ant-tabs-content {
             padding-bottom: 10px;
-            border-bottom: 1px solid #ccc;
+            // border-bottom: 1px solid #ccc;
             overflow: hidden;
 
             &.hide {
@@ -125,6 +219,10 @@
         }
         .ant-tabs-ink-bar {
             display: none !important;
+        }
+
+        .ant-radio-button-wrapper-checked {
+            color: #c40100;
         }
     }
 

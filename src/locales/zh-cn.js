@@ -37,6 +37,10 @@ export default {
     'music': '音乐',
     'effects': '效果',
     'baidu_search': '百度搜索',
+    'upload_local_audio': '上传本地音频',
+    'select_online_audio': '选择在线音频',
+    'record_audio': '录制音频',
+    'no_audio': '不使用音频',
 
     // operations
     'cancel': '取消',
@@ -63,6 +67,7 @@ export default {
     'reset_clip_operation': '您确定要重置裁剪操作吗？',
     'audio_settings_successful': '音频设置成功！',
     'audio_settings_failed': '音频设置失败！',
+    'check_microphone': '请前往：控制面板 > 设置 > 输入设备,<br>检查麦克风',
 
     // warning
     'restore_picture_warning': '重载之后，所有的修改都将丢失。您确认要重载图片吗？',
