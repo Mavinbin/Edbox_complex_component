@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {formatMessage} from 'umi/locale';
 import {Icon} from 'antd';
-import Label from '../../components/label';
+import Label from '@/components/label';
 import styles from './index.scss';
 
 class Color extends Component {

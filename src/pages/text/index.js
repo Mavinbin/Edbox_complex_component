@@ -1,11 +1,11 @@
 import React, {Component} from 'react';
 import {Button} from 'antd';
-import {formatMessage}  from 'umi/locale';
-import Header from '../../components/header';
-import FontFamily from '../../components/fontfamily';
-import FontSize from '../../components/fontsize';
-import Color from '../../components/color';
-import FontStyle from '../../components/fontstyle';
+import {formatMessage} from 'umi/locale';
+import Header from '@/components/header';
+import FontFamily from '@/components/fontfamily';
+import FontSize from '@/components/fontsize';
+import Color from '@/components/color';
+import FontStyle from '@/components/fontstyle';
 import '../../common.scss'
 import './index.scss';
 
@@ -74,8 +74,7 @@ class Text extends Component {
                     }
                 ]
             },
-            fontSizeList: [
-                {
+            fontSizeList: [{
                     id: 0,
                     value: 12
                 },

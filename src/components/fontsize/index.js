@@ -1,8 +1,8 @@
 import React, {Component} from 'react';
 import {Select} from 'antd';
 import {formatMessage} from 'umi/locale';
-import Label from '../../components/label';
-import IconButton from '../../components/iconbutton';
+import Label from '@/components/label';
+import IconButton from '@/components/iconbutton';
 import styles from './index.scss';
 
 class FontSize extends Component {

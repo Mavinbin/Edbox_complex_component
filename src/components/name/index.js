@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 import {Input} from 'antd';
 import {formatMessage} from 'umi/locale';
 import styles from './index.scss';
-import Label from '../label';
+import Label from '@/components/label';
 
 class Name extends Component {
     render() {

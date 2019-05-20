@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
 import {Select, Icon} from 'antd';
-import Label from '../../components/label';
+import Label from '@/components/label';
 import styles from './index.scss';
 
 class FontFamily extends Component {

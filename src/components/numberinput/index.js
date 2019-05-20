@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import {InputNumber} from 'antd';
-import Label from '../../components/label';
+import Label from '@/components/label';
 import styles from './index.scss';
 
 class NumberInput extends Component {
