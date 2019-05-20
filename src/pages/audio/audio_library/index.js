@@ -186,7 +186,7 @@ class AudioLibrary extends Component {
                 hasMore: false,
                 isShowMore: false
             },
-            searchEngine: 2
+            searchEngine: 1
         }
     }
     componentWillMount() {
@@ -265,21 +265,25 @@ class AudioLibrary extends Component {
         const {TabPane} = Tabs;
         return (
             <div>
-                <Header title={formatMessage({id: 'audio_library'})} back/>
+                <div className="header-wrap">
+                    <Header title={formatMessage({id: 'audio_library'})} back/>
+                </div>
                 <div className={styles['top-panel']}>
                     <Row gutter={7} className={styles['search-bar']}>
-                        {searchEngine === 1 ?
-                        <Col span={10}>
-                            <RadioGroup defaultValue={1} buttonStyle="solid" className={`${styles['lib-type']} lib-type`}>
-                                <RadioButton value={1}>{formatMessage({id: 'music'})}</RadioButton>
-                                <RadioButton value={2}>{formatMessage({id: 'effects'})}</RadioButton>
-                            </RadioGroup>
-                        </Col>
-                        : null
-                        }
-                        <Col span={searchEngine === 1 ? 14 : 24}>
-                            <Search searchEngineList={searchEngineList} defaultEngine={searchEngine} placeholder={formatMessage({id: 'search_word'})}  onEngineChange={this.handleSearchEngineChange.bind(this)}/>
-                        </Col>
+                        <div className="side-wrap">
+                            {searchEngine === 1 ?
+                            <Col span={10}>
+                                <RadioGroup defaultValue={1} buttonStyle="solid" className={`${styles['lib-type']} lib-type`}>
+                                    <RadioButton value={1}>{formatMessage({id: 'music'})}</RadioButton>
+                                    <RadioButton value={2}>{formatMessage({id: 'effects'})}</RadioButton>
+                                </RadioGroup>
+                            </Col>
+                            : null
+                            }
+                            <Col span={searchEngine === 1 ? 14 : 24}>
+                                <Search searchEngineList={searchEngineList} defaultEngine={searchEngine} placeholder={formatMessage({id: 'search_word'})}  onEngineChange={this.handleSearchEngineChange.bind(this)}/>
+                            </Col>
+                        </div>
                     </Row>
                     <div className="filter-panel">
                         {
@@ -287,7 +291,7 @@ class AudioLibrary extends Component {
                                 musicType && musicType.length ? 
                                 <Tabs animated={false} tabBarGutter={0}>
                                     {musicType.map(type => 
-                                        <TabPane tab={getLocale() === 'en-US' ? type.englishName : type.chineseName} key={type.id}>
+                                        <TabPane tab={getLocale() === 'en-US' ? type.englishName : type.chineseName} key={type.id} className="side-wrap">
                                             <Row gutter={4}>
                                                 <RadioGroup defaultValue={[type.id, 1].join('_')} className={styles['subtype-group']}>
                                                     {
@@ -325,41 +329,43 @@ class AudioLibrary extends Component {
                             :
                             searchWords && searchWords.data && searchWords.data.length ?
                             <div className={styles['search-word']}>
-                                <p className={styles['tit']}>{formatMessage({id: 'search_word'})}:</p>
-                                <Row gutter={4}>
-                                    <RadioGroup className={styles['subtype-group']}>
-                                        {
-                                            (() => {
-                                                let arr = searchWords.data;
-                                                if (searchWords.hasMore && !searchWords.isShowMore) {
-                                                    arr = arr.slice(0, 7);
-                                                }
-                                                if (searchWords.hasMore && searchWords.isShowMore) {
-                                                    arr = searchWords.data;
-                                                }
-                                                return arr.map((item, i) => 
-                                                    <div key={item.id}>
-                                                        <Col span={6}>
-                                                            <RadioButton className={styles['subtype-btn']} value={item.id}>{getLocale() === 'en-US' ? item.englishName : item.chineseName}</RadioButton>
-                                                        </Col>
-                                                        {i === arr.length - 1 && searchWords.hasMore ? 
+                                <div className="side-wrap">
+                                    <p className={styles['tit']}>{formatMessage({id: 'search_word'})}:</p>
+                                    <Row gutter={4}>
+                                        <RadioGroup className={styles['subtype-group']}>
+                                            {
+                                                (() => {
+                                                    let arr = searchWords.data;
+                                                    if (searchWords.hasMore && !searchWords.isShowMore) {
+                                                        arr = arr.slice(0, 7);
+                                                    }
+                                                    if (searchWords.hasMore && searchWords.isShowMore) {
+                                                        arr = searchWords.data;
+                                                    }
+                                                    return arr.map((item, i) => 
+                                                        <div key={item.id}>
                                                             <Col span={6}>
-                                                                <Button className={`${styles['subtype-btn']} ${styles['btn-more']} ellipsis`} onClick={this.handleToggleSearchWord.bind(this)}>
-                                                                    <IconFont type={searchWords.isShowMore ? 'icon-retract' : 'icon-expand'}/>
-                                                                </Button>
+                                                                <RadioButton className={styles['subtype-btn']} value={item.id}>{getLocale() === 'en-US' ? item.englishName : item.chineseName}</RadioButton>
                                                             </Col>
-                                                            : null
-                                                        }
-                                                    </div>
-                                                )
-                                            })()
-                                        }
-                                    </RadioGroup>
-                                </Row>
-                                <p className={styles['warning-info']}>
-                                    <IconFont type="icon-warning"/>
-                                    {formatMessage({id: 'network_audio_resources_warning'})}
-                                </p>
+                                                            {i === arr.length - 1 && searchWords.hasMore ? 
+                                                                <Col span={6}>
+                                                                    <Button className={`${styles['subtype-btn']} ${styles['btn-more']} ellipsis`} onClick={this.handleToggleSearchWord.bind(this)}>
+                                                                        <IconFont type={searchWords.isShowMore ? 'icon-retract' : 'icon-expand'}/>
+                                                                    </Button>
+                                                                </Col>
+                                                                : null
+                                                            }
+                                                        </div>
+                                                    )
+                                                })()
+                                            }
+                                        </RadioGroup>
+                                    </Row>
+                                    <p className={styles['warning-info']}>
+                                        <IconFont type="icon-warning"/>
+                                        {formatMessage({id: 'network_audio_resources_warning'})}
+                                    </p>
+                                </div>
                             </div>
                             :null
                         }

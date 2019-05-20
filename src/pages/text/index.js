@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import {Button} from 'antd';
 import {formatMessage}  from 'umi/locale';
 import Header from '../../components/header';
 import FontFamily from '../../components/fontfamily';
@@ -109,12 +110,16 @@ class Text extends Component {
     render() {
         const {fontFamilyList, fontSizeList, fontColor} = this.state;
         return (
-            <div>
+            <div className="page-wrap">
                 <Header title={formatMessage({id: 'edit_text'})}/>
                 <FontFamily data={fontFamilyList} defaultValue={0} className="row"/>
                 <FontSize data={fontSizeList} defaultValue={0} className="row"/>
                 <Color color={fontColor} className="row"/>
                 <FontStyle className="row"/>
+                <div className="btm-btns">
+                    <Button>{formatMessage({id: 'reset'})}</Button>
+                    <Button type="primary">{formatMessage({id: 'use'})}</Button>
+                </div>
             </div>
         )
     }

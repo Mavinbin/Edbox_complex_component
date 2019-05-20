@@ -7,7 +7,7 @@ import styles from './index.scss';
 class Image extends Component {
     render() {
         return (
-            <div>
+            <div className="page-wrap">
                 <Header title={formatMessage({id: 'edit_picture'})}/>
                 <div className={styles['widget'] + ' ' + styles['main-tools']}>
                     <IconButton iconfont="icon-image-upload"/>

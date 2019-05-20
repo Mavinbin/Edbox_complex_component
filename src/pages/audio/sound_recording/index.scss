@@ -26,7 +26,20 @@
 
 .actions {
     text-align: center;
-    .btn-record, .ico-play, .ico-reload {
+
+    &.disabled {
+        .actions-ico {
+            color: #ccc !important; 
+            cursor: not-allowed;
+        }
+
+        .btn-record {
+            border-color: #ccc !important;
+            cursor: not-allowed;
+        }
+    }
+
+    .btn-record, .actions-ico {
         display: inline-block;
         vertical-align: middle;
         color: #999;
@@ -49,17 +62,6 @@
         border-radius: 50%;
         font-size: 28px;
 
-        // .no-connected {
-        //     position: absolute;
-        //     right: -3px;
-        //     bottom: 0;
-        //     width: 22px;
-        //     height: 22px;
-        //     line-height: 0;
-        //     font-size: 22px;
-        //     text-align: center;
-        // }
-
         .ico-forbid{
             position: absolute;
             right: -3px;
@@ -70,8 +72,12 @@
         }
 
         .ico-forbid {
-            color: #cf0201;
+            color: #cf0201 !important;
             margin-bottom: 8px;
+        }
+
+        .ico-pause {
+            text-indent: 2px;
         }
     }
 
@@ -98,6 +104,11 @@
             margin-bottom: 2px;
             cursor: pointer;
         }
+    }
+
+    .record-tips {
+        font-size: 12px;
+        color: #999;
     }
 }
 

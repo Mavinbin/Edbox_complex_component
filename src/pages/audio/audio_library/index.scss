@@ -56,7 +56,7 @@
     position: relative;
     height: 40px;
     line-height: 40px;
-    padding: 0 70px 0 18px;
+    padding: 0 70px 0 21px;
     border-bottom: 1px solid #e2e2e2;
     background: #fff;
     color: #333;
@@ -206,7 +206,7 @@
     .filter-panel {
         .ant-tabs-content {
             padding-bottom: 10px;
-            // border-bottom: 1px solid #ccc;
+            border-bottom: 1px solid #ccc;
             overflow: hidden;
 
             &.hide {
@@ -223,6 +223,10 @@
 
         .ant-radio-button-wrapper-checked {
             color: #c40100;
+        }
+
+        .ant-tabs-nav-wrap {
+            padding: 0 5px;
         }
     }
 

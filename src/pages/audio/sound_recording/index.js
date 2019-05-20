@@ -143,7 +143,7 @@ class SoundRecording extends Component {
     render() {
         const {name, currTime, audioEffect} = this.state;
         return (
-            <div>
+            <div className="page-wrap">
                 <Header title={formatMessage({id: 'sound_recording'})} back/>
                 <Name className="row" defaultValue={name}/>
                 <div className="row2">
@@ -151,15 +151,18 @@ class SoundRecording extends Component {
                     <div id="waveform" className={styles['waveform']}></div>
                     <div id="timeline" className={styles['timeline']}></div>
                 </div>
-                <div className={`${styles['actions']} row2`}>
-                    <IconFont type="icon-reload" className={styles['ico-reload']}/>
+                <div className={`${styles['actions']} row2 ${styles['disabled']}`}>
+                    <IconFont type="icon-reload" className={`${styles['ico-reload']} ${styles['actions-ico']}`}/>
                     <Button className={styles['btn-record']}>
-                        <IconFont type="icon-microphone" className={styles['ico-record']}/>
-                        <IconFont type="icon-forbid-s-o" className={styles['ico-forbid']}/>
+                        {
+                            // <IconFont type="icon-microphone" className={styles['ico-record']}/> // 录音状态
+                            <IconFont type="icon-pause" className={`${styles['ico-pause']} ${styles['actions-ico']}`}/> // 暂停状态
+                        }
+                        <IconFont type="icon-forbid-s-o" className={`${styles['ico-forbid']} ${styles['actions-ico']}`}/>
                     </Button>
                     {
                         // <IconFont type="icon-play" className={styles['ico-play']}/> // 播放状态
-                        <IconFont type="icon-stop" className={styles['ico-play']}/> // 停止状态
+                        <IconFont type="icon-stop" className={`${styles['ico-play']} ${styles['actions-ico']}`}/> // 停止状态
                     }
                     <p className={styles['warning-info']}>
                         {formatMessage({id: 'microphone_not_connetced'})}
@@ -167,6 +170,7 @@ class SoundRecording extends Component {
                             <i>?</i>
                         </Popover>
                     </p>
+                    <p className={styles['record-tips']}>{formatMessage({id: 'speak_to_microphone'})}</p>
                 </div>
                 {audioEffect && audioEffect.length ?
                     <div className="effect-swiper row2">

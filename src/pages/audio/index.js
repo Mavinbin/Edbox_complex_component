@@ -122,7 +122,7 @@ class EditAudio extends Component {
         const RadioButton = Radio.Button;
         const RadioGroup = Radio.Group;
         return (
-            <div>
+            <div className="page-wrap">
                 <Header title={formatMessage({id: 'edit_audio'})}/>
                 <div className="row">
                     <IconButton iconfont="icon-upload-audio" toolTip={formatMessage({id: 'upload_local_audio'})} placement="bottomLeft"/>
