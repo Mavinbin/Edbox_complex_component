@@ -41,6 +41,7 @@ export default {
     'select_online_audio': '选择在线音频',
     'record_audio': '录制音频',
     'no_audio': '不使用音频',
+    'use': '使用',
 
     // operations
     'cancel': '取消',

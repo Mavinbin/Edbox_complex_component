@@ -42,6 +42,7 @@ export default {
   'select_online_audio': 'Select online audio',
   'record_audio': 'Record audio',
   'no_audio': 'No audio',
+  'use': 'Use',
 
   // operations
   'cancel': 'Cancel',

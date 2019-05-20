@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {formatMessage}  from 'umi/locale';
 import Link from 'umi/link';
-import {Icon, Slider, Row, Col, Radio, Button} from 'antd';
+import {Slider, Row, Col, Radio, Button} from 'antd';
 import IconFont from '@/components/iconfont';
 import WaveSurfer from 'wavesurfer.js';
 import Timeline from 'wavesurfer.js/dist/plugin/wavesurfer.timeline';
