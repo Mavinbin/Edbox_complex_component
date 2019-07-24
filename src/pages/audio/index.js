@@ -18,30 +18,33 @@ class EditAudio extends Component {
         super();
         this.state = {
             wavesurfer: null,
-            start: 0.01,
-            end: 0.01,
+            start: 0,
+            end: 0,
             step: 0.01,
             name: 'music',
-            currTime: '00:35:00',
+            duration: null,
+            currTime: '00:00:00',
+            originalBuffer: null,
+            defaultStart: 10,
+            defaultEnd: 50,
             audioUrl: 'http://ossweb-img.qq.com/images/audio/motion/audio4.mp3'
         }
-    }
-    componentDidMount() {
-        this.waveSurferInit();
     }
     /**
      * 处理音频显示区
      */
     waveSurferInit() {
         const {audioUrl} = this.state;
+        const _this = this;
         const wavesurfer = WaveSurfer.create({
             container: '#waveform',
             cursorColor: '#047ef0',
             cursorWidth: 2,
-            barWidth: 2,
-            hideScrollbar: true,
+            barWidth: 1,
+            barGap: 4,
             waveColor: '#ccc',
             progressColor: '#ccc',
+            hideScrollbar: true,
             responsive: true,
             plugins: [
                 this.timelineInit(),
@@ -49,12 +52,27 @@ class EditAudio extends Component {
             ]
         });
         wavesurfer.load(audioUrl);
-        wavesurfer.on('ready', () => {
-            
-        });
+        wavesurfer.on('ready', function() {
+            const {duration, start, originalBuffer} = _this.state;
+            const updateState = {
+                end: duration
+            };
+            if (duration === null) {
+                const duration = parseFloat(wavesurfer.getDuration().toFixed(2)); // 获取音频时长
+                updateState.duration = duration;
+            }
+            if (originalBuffer === null) {
+                updateState.originalBuffer = wavesurfer.backend.buffer;
+            }
+            _this.setState(updateState, () => {
+                if(originalBuffer === null) {
+                    _this.handleAudioPartialRender();
+                }
+            });
+        })
         const thumbwave = WaveSurfer.create({
             container: '#thumbwave',
-            cursorColor: '#047ef0',
+            cursorColor: 'transparent',
             cursorWidth: 2,
             barWidth: 2,
             hideScrollbar: true,
@@ -89,9 +107,8 @@ class EditAudio extends Component {
         return Regions.create({
             regions: [
                 {
-                    start: 5,
-                    end: 20,
-                    color: 'rgba(207, 1, 0, 0.3)'
+                    color: 'rgba(207, 1, 0, 0.3)',
+                    drag: false
                 }
             ]
         })  
@@ -102,25 +119,91 @@ class EditAudio extends Component {
      * @param {float} pxPerSec 每秒px数
      */
     formatTimeCallback(seconds, pxPerSec) {
-        let min = 0;
-        let sec = 0;
-        let hour = 0;
-        hour = Math.floor(seconds / 60 / 60);
-        hour = hour < 10 ? `0${hour}` : hour;
-        min = Math.floor(seconds / 60);
-        min = min < 10 ? `0${min}` : min;
-        sec = seconds % 60;
-        sec = sec < 10 ? `0${sec}` : sec;
-        if (!parseInt(hour)) {
-            return `${min}:${sec}.00`;
-        } else {
-            return `${hour}:${min}:${sec}.00`;
+        let h = 0;
+        let m = 0;
+        let s = 0;
+        h = parseInt(seconds / 3600);
+        m = parseInt(seconds / 60);
+        s = parseFloat((seconds % 60).toFixed(2));
+        if (!parseInt(h)) {
+            return `${this.handleZeroFill(h)}:${this.handleZeroFill(m)}:${this.handleZeroFill(s)}`;
+        }
+
+        return `${this.handleZeroFill(m)}:${this.handleZeroFill(s)}`;
+    }
+
+    /**
+     * 处理滑动条变化
+     */
+    handleSliderChange(value) {
+        const {wavesurfer, duration} = this.state;
+        const start = value[0];
+        const end = value[1];
+        this.setState({
+            start: start,
+            end: end
+        });
+        wavesurfer.zoom((end - start) / duration * 100);
+    }
+
+    /**
+     * 选取部分波形渲染
+     */
+    handleAudioPartialRender() {
+        const {wavesurfer, originalBuffer, defaultStart, defaultEnd} = this.state;
+        if (wavesurfer) {
+            const newBuffer = wavesurfer.backend.ac.createBuffer(
+                originalBuffer.numberOfChannels,
+                Math.ceil(defaultEnd - defaultStart) * originalBuffer.sampleRate,
+                originalBuffer.sampleRate
+            );
+
+            const newChannelData = new Float32Array((defaultEnd - defaultStart) * originalBuffer.sampleRate);
+            for (let i = 0; i < originalBuffer.numberOfChannels; i++) {
+                let originalChannelData = originalBuffer.getChannelData(i);
+                for (var j = defaultStart * originalBuffer.sampleRate, k = 0, len = defaultEnd * originalBuffer.sampleRate; j < len; j++, k++) {
+                    newChannelData[k] = originalChannelData[j];
+                }
+            }
+            if (isNaN(newChannelData[0])) {
+                return false;
+            }
+            newBuffer.copyToChannel(newChannelData, 0, 0);
+            wavesurfer.empty();
+            wavesurfer.loadDecodedBuffer(newBuffer);
+            console.log(newChannelData);
         }
     }
+
+    /**
+     * 处理滑动条的tip显示格式
+     */
+    handleSliderTipFormatter(value) {
+        const h = parseInt(value / 3600);
+        const m = parseInt((value % 3600) / 60);
+        const s = parseFloat((value % 60).toFixed(2));
+        return `${this.handleZeroFill(h)}:${this.handleZeroFill(m)}:${this.handleZeroFill(s)}`;
+    }
+    /**
+     * 处理小于10时的补0
+     */
+    handleZeroFill(num) {
+        if (num < 10) {
+            return '0' + num;
+        }
+
+        return num;
+    }
+
+    componentDidMount() {
+        this.waveSurferInit();
+    }
+
     render() {
-        const {start, end, step, currTime, name} = this.state;
+        const {start, end, step, currTime, name, duration, audioUrl} = this.state;
         const RadioButton = Radio.Button;
         const RadioGroup = Radio.Group;
+        
         return (
             <div className="page-wrap">
                 <Header title={formatMessage({id: 'edit_audio'})}/>
@@ -164,7 +247,11 @@ class EditAudio extends Component {
                 </div>
                 <div className={`${styles['zoomer']} wave-zoomer row2`}>
                     <div className={styles['slider-main']} id="thumbwave"></div>
-                    <Slider className={styles['slider']} range defaultValue={[0, 100]}/>
+                    {
+                        duration !== null ? 
+                        <Slider className={styles['slider']} range defaultValue={[0, duration]} onChange={this.handleSliderChange.bind(this)} step={step} max={duration} tipFormatter={this.handleSliderTipFormatter.bind(this)}/>
+                        : null
+                    }
                 </div>
                 <div className={`${styles['actions']} row2`}>
                     <IconFont type="icon-save" className={styles['ico-save']}/>
@@ -179,6 +266,7 @@ class EditAudio extends Component {
                 <div className="btm-btns">
                     <Button type="primary" className={styles['btn-reset']}>{formatMessage({'id': 'reset'})}</Button>
                 </div>
+                <audio id="audio" src={audioUrl}/>   
             </div>
         )
     }
